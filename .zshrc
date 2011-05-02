@@ -242,6 +242,8 @@ HISTSIZE=50000
 
 EDITOR="vim"
 
+CORRECT_IGNORE='_*'
+
 if [[ -x ` which less` ]]
 export LESSCHARSET="utf-8"
 then
