@@ -2,7 +2,7 @@
 
 startup () {
 	# info on any running screens
-	if [[ -x `which screen` ]]
+	if [[ -x $(which screen) ]]
 	then
 		ZSHRC_SCREENLIST=(${${(M)${(f)"$(screen -ls)"}:#(#s)[[:space:]]##([0-9]##).*}/(#b)[[:space:]]#([0-9]##).*/$match[1]})
 		if [[ $#ZSHRC_SCREENLIST -ge 1 ]]
@@ -14,7 +14,7 @@ startup () {
 ## TODO: Change to check /sys and build in rebuildrprompt()
 ##       maybe use /sys directly, if possible
 #	# check if acpitool is installed. if yes, tell rebuildrprompt to use it
-#	if [[ -x `which acpitool` ]]
+#	if [[ -x $(which acpitool) ]]
 #	then
 #		ZSHRC_ACPITOOL='1'
 #	fi
@@ -22,6 +22,7 @@ startup () {
 	startup_warnings
 
 	buildPS1
+
 
 	# change the terminals title if it's a xterm, konsole or the like
 	header "%l %n@%m: %~"

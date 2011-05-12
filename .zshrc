@@ -244,7 +244,7 @@ EDITOR="vim"
 
 CORRECT_IGNORE='_*'
 
-if [[ -x ` which less` ]]
+if [[ -x $( which less) ]]
 export LESSCHARSET="utf-8"
 then
 	export PAGER="less"
@@ -262,18 +262,18 @@ else
 	export PAGER="more"
 fi
 
-[[ -x `which colordiff` ]] && alias diff=colordiff
+[[ -x $(which colordiff) ]] && alias diff=colordiff
 
-([[ -x `which w3m` ]]       && export BROWSER="w3m")      || \
-([[ -x `which links2` ]]    && export BROWSER="links2")   || \
-([[ -x `which elinks` ]]    && export BROWSER="elinks")   || \
-([[ -x `which lynx` ]]      && export BROWSER="lynx")     || \
-([[ -x `which links` ]]     && export BROWSER="links")    || \
+([[ -x $(which w3m) ]]       && export BROWSER="w3m")      || \
+([[ -x $(which links2) ]]    && export BROWSER="links2")   || \
+([[ -x $(which elinks) ]]    && export BROWSER="elinks")   || \
+([[ -x $(which lynx) ]]      && export BROWSER="lynx")     || \
+([[ -x $(which links) ]]     && export BROWSER="links")    || \
 echo "WARNING: You do not have any browser installed!"
 
-([[ -x `which vimdiff` ]]   && export DIFFER="vimdiff")   || \
-([[ -x `which colordiff` ]] && export DIFFER="colordiff") || \
-([[ -x `which diff` ]]      && export DIFFER="diff")      || \
+([[ -x $(which vimdiff) ]]   && export DIFFER="vimdiff")   || \
+([[ -x $(which colordiff) ]] && export DIFFER="colordiff") || \
+([[ -x $(which diff) ]]      && export DIFFER="diff")      || \
 echo "WARNING: You do not have any differ installed!"
 
 
@@ -296,10 +296,10 @@ setopt    hash_list_all                # [set] always make sure that the entire 
 setopt    short_loops                  # [unset] 'for i in *; echo $i;' instead of 'for i in *; do echo $i; done'
 #setopt globdots                # with this, we could treat dotfiles the same as normal ones
 
-setopt    interactive_comments         # with this, we can do `some_evil_stuff # which we explain` and just execute some_evil_stuff
+setopt    interactive_comments         # with this, we can do 'some_evil_stuff # which we explain' and just execute some_evil_stuff
 setopt    list_packed                  # [unset] show compact completion list
 setopt    long_list_jobs               # [unset] show job number & PID when suspending
-setopt no_clobber                      # this will probihbit `cat foo > bar` if bar exists. use >! instead
+setopt no_clobber                      # this will probihbit 'cat foo > bar' if bar exists. use >! instead
 setopt    extended_glob                # enables various things, most notably ^negation. '^', '#' and forgotwhich :/ see cheatsheet & http://zsh.dotsrc.org/Intro/intro_2.html#SEC2
 setopt    numeric_glob_sort            # [unset] enables numeric order in globs
 setopt    notify                       # [on] this will put info from finished background processes over the current line

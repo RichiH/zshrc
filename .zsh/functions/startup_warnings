@@ -10,8 +10,8 @@ startup_warnings () {
 
 ## TODO split into local/ssh stuff
 	WARNSTRING=''
-	foreach test (pastebinit screen vim watch less w3m iotop rsibreak); do
-		[[ -x `which $test` ]] || WARNSTRING+="$test "
+	foreach test (pastebinit screen vim watch less w3m iotop rsibreak ssh-add pinentry); do
+		[[ -x $(which $test) ]] || WARNSTRING+="$test "
 	done
 
 	[[ -n $WARNSTRING ]] && echo "Not installed: $WARNSTRING"
