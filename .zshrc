@@ -121,7 +121,7 @@ bindkey "^Ew" delete-whole-word-match
 zle -N        __insert-last-typed-word;
 bindkey "^E." __insert-last-typed-word
 
-# "ctrl-q q" to quote line
+# "ctrl-e q" to quote line
 __quote_line () {
 	zle beginning-of-line
 	zle forward-word
@@ -195,8 +195,8 @@ zstyle    ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle    ':completion:*:kill:*' command 'ps xf -u $USER -o pid,%cpu,cmd'
 zstyle    ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 
-# ignore aux|dvi|log|idx|pdf|rel|out if there is any other file to complete on, first
-zstyle     ':completion::*:(vi|vim):*' file-patterns '*~*.(aux|dvi|log|idx|pdf|rel|out)' '*'
+# vim completion: complete on aux|dvi|log|idx|pdf|rel|out last
+zstyle     ':completion::*:(vi|vim):*' file-patterns '*.nroff' '*~*.(aux|dvi|log|idx|pdf|rel|out)' '*'
 
 
 
@@ -213,7 +213,7 @@ zle_highlight=(isearch:underline)
 autoload colors
 colors
 
-# make sure our function directories exist
+# make sure our function directories exist and load from them
 foreach function_directory (~/.zsh/functions ~/.zsh/functions/hooks); do;
 [[ -d $function_directory ]] || print -P "$fg_bold[red]WARNING:$fg_no_bold[default] $function_directory does not exist. Shell functionality will be severely limited!"
 done;
@@ -230,6 +230,7 @@ SPROMPT="zsh: correct '%R' to '%r'? [N/y/a/e] "  # the prompt we see when being 
 PATH+=:/usr/bin
 PATH=/usr/local/bin:$PATH
 [[ -d ~/.bin ]] && PATH=~/.bin:$PATH
+[[ -d ~/bin ]] && PATH=~/bin:$PATH
 [[ -d /usr/local/vim_extended/bin ]] && PATH=/usr/local/vim_extended/bin:$PATH
 
 watch=(notme)
@@ -288,7 +289,7 @@ setopt    hist_verify                  # [unset] when doing history substitution
 
 setopt    auto_remove_slash            # [unset] If a completion ends with a slash and you type another slash, remove one of them
 setopt    bg_nice                      # [set -6] Renice background jobs
-#setopt cdablevars
+#setopt    cdablevars
 setopt    auto_param_slash             # [set] append a slash if completion target was a directory
 setopt    auto_cd                      # [unset] enables you to omit 'cd' before a path
 setopt    correct_all                  # Try to autocorrect commands & file names
@@ -324,7 +325,7 @@ typeset WORDCHARS='|'$WORDCHARS
 alias vimrc="$EDITOR ~/.vimrc"
 alias zshrc="$EDITOR ~/.zshrc"
 alias zshrc.staging="$EDITOR ~/.zshrc.staging"
-alias zshrc.local="$EDITOR ~/.zshrc.local.$HOST"
+alias zshrc.local="$EDITOR ~/.zshrc.$HOST"
 
 
 # shortcuts
@@ -366,7 +367,7 @@ alias dd_status='kill -SIGUSR1 $(pidof dd)'
 alias mv='nocorrect mv -i'      # prompt before overwriting files
 alias mkdir='nocorrect mkdir'   # don't correct mkdir
 alias man='nocorrect man'
-alias wget='noglob wget'        # else, i will have my home dir cluttered with dozens of foo.n
+alias wget='noglob wget'
 alias whois='whois -H'
 alias gpg='gpg --no-use-agent'
 alias grep='grep --color=auto'
@@ -433,6 +434,11 @@ alias lssmall="ls -Srl *(.oL[1,10])"
 alias ssh-noverify='ssh -o "StrictHostKeyChecking=no" -o "UserKnownHostsFile=/dev/null"'
 alias scp-noverify='scp -o "StrictHostKeyChecking=no" -o "UserKnownHostsFile=/dev/null"'
 
+# serial console stuff
+alias serial_115200_7bit='screen /dev/ttyUSB0 115200,cs7'
+alias serial_2400_8bit_noflow='screen /dev/ttyUSB0 2400,cs8,ixoff'
+alias serial_9600_8bit='screen /dev/ttyUSB0 9600,cs8'
+
 
 ## named directories
 
@@ -479,7 +485,7 @@ bindkey "^Xf" insert-files ## C-x-f
 # "ctrl-e r" : search backwards using globbing
 autoload -U   history-pattern-search
 zle -N        history-pattern-search-backward history-pattern-search
-bindkey '^Xr' history-pattern-search-backward
+bindkey '^er' history-pattern-search-backward
 
 # zmv
 autoload -U zmv
@@ -495,7 +501,7 @@ bindkey '^Xh' _complete_help
 # "ctrl-x t" : tetris
 autoload -U   tetris
 zle -N        tetris
-bindkey "^Xt" tetris ## C-x-t to play
+bindkey "^et" tetris ## C-x-t to play
 
 # My own completions
 
