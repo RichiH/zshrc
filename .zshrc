@@ -91,7 +91,7 @@ bindkey '^[[H'  beginning-of-line
 bindkey '^[[F'  end-of-line
 
 bindkey '^[#'   pound-insert                          # toggle a hash pound in front of the edit buffer and accept-line
-bindkey '^q'    push-line                             # push command, pop automagically after next <CR>
+bindkey '^f'    push-line                             # push command, pop automagically after next <CR>
 #bindkey '^Z'    undo                                  # undo changes on zle
 bindkey -s '^B' " &\n"                                # run in background
 bindkey -s '^Z' "fg\n"                                # fetch background job into foreground
