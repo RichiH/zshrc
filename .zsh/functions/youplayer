@@ -1,0 +1,5 @@
+#!/usr/bin/zsh
+
+YOUTUBE_COOKIE=$XDG_CACHE_HOME/youplayer.cookie
+mplayer -really-quiet -cookies -cookies-file ${YOUTUBE_COOKIE} \
+	$(youtube-dl -g --cookies ${YOUTUBE_COOKIE} $*)
