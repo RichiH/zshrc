@@ -1,0 +1,10 @@
+#!/usr/bin/zsh
+
+help_modifiers () {
+	echo '
+Modifiers:
+    (:h) head; (:t) tail; (:e) extension; (:u) upercase; (:l) lowercase
+Editing:
+    print -z foo
+'
+}

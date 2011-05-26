@@ -1,0 +1,18 @@
+#!/usr/bin/zsh
+
+startup_warnings () {
+
+	# Holler if $HOST is not set
+	[[ -z $HOST ]] && echo "\n\$HOST is not set! Fix! this! NOW!\n"
+
+	# We want to warn if root does not have ~/.Xauthority linked to a user, unless we are using SSH.
+	[[ $UID -eq 0 ]] && [[ ! -n $SSH_TTY && -e ~/.Xauthority && ! -L ~/.Xauthority ]] && echo "~/.Xauthority exists, but is _not_ a symlink."
+
+## TODO split into local/ssh stuff
+	WARNSTRING=''
+	foreach test (pastebinit screen vim watch less w3m iotop rsibreak); do
+		[[ -x `which $test` ]] || WARNSTRING+="$test "
+	done
+
+	[[ -n $WARNSTRING ]] && echo "Not installed: $WARNSTRING"
+}

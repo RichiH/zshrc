@@ -1,0 +1,10 @@
+#!/usr/bin/zsh
+
+help () {
+	echo -e "
+Available subjects:
+"
+	for i in $HOME/.zsh/functions/help.d/*; echo "  $(basename $i)"
+	echo
+}
+

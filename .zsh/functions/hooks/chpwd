@@ -1,0 +1,6 @@
+#!/usr/bin/zsh
+
+chpwd () {
+	header "%l %n@%m: %~"
+}
+

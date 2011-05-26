@@ -1,0 +1,6 @@
+#!/usr/bin/zsh
+
+precmd() {
+	buildRPS1
+}
+

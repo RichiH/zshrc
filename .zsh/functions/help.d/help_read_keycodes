@@ -1,0 +1,7 @@
+#!/usr/bin/zsh
+
+help_read_keycodes () {
+	echo -e "
+Type 'read' and hit your keys.. :)
+"
+}

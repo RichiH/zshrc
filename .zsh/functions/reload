@@ -1,0 +1,13 @@
+#!/usr/bin/zsh
+
+reload() {
+	if [[ "$#*" -eq 0 ]] ; then
+		[[ -r ~/.zshrc ]] && . ~/.zshrc
+	else
+		local function
+		for function in "$@"; do
+			unfunction $function
+			autoload -U $funtion
+		done
+	fi
+}

@@ -1,0 +1,19 @@
+#!/usr/bin/zsh
+
+# list & purge well-known tempfiles
+purge() {
+	FILES=(*~(N) .*~(N) \#*\#(N) *.o(N) a.out(N) *.core(N) *.cmo(N) *.cmi(N) .*.swp(N))
+	NBFILES=${#FILES}
+	if [[ $NBFILES > 0 ]] ; then
+		print $FILES
+		local ans
+		echo -n "Remove these files? [y/n] "
+		read -q ans
+		if [[ $ans == "y" ]] ; then
+			rm ${FILES}
+			echo ">> $PWD purged, $NBFILES files removed"
+		else
+			echo "Ok. .. than not.."
+		fi
+	fi
+}

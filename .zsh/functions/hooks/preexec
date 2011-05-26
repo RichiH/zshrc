@@ -1,0 +1,5 @@
+#!/usr/bin/zsh
+
+preexec () {
+	ZSHRC_LAST_TIME=$SECONDS;ZSHRC_LAST_EXECUTE="1";
+}

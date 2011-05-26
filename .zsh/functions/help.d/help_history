@@ -1,0 +1,16 @@
+#!/usr/bin/zsh
+
+help_history() {
+	echo -e "
+
+!42       # re-run command 42
+!!       # re-run last command
+!v       # re-run last command that started with 'v'
+!?foo?   # re-run last command that had the string "foo" anywhere in it
+
+!^       # first argument  of last command
+!$       # last  argument  of last command
+!!*      # all   arguments of last command
+
+"
+}

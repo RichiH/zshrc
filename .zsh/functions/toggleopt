@@ -1,0 +1,5 @@
+#!/usr/bin/zsh
+
+toggleopt () {
+	[[ -o $1 ]] && unsetopt $1 || setopt $1
+}

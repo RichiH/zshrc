@@ -1,0 +1,44 @@
+#!/usr/bin/zsh
+
+## TODO: setopt promptsubst
+#  This way, we can put variables into the prompt and they get substituted
+
+## TODO: Use /sys/ for ACPI battery readout
+
+buildRPS1() {
+	autoload colors
+	colors
+
+	# we are using this style to create a more readable version
+	RPS1="%(?..%{$fg_bold[grey]%}[%{$fg_no_bold[red]%}%U%?%u%{$fg_bold[grey]%}]%{$fg_no_bold[default]%}) " # colored [$returncode]
+	if [[ $ZSHRC_LAST_EXECUTE -eq 1 ]]; then;
+		ZSHRC_NEW_TIME=$((SECONDS - ZSHRC_LAST_TIME));
+		ZSHRC_LAST_EXECUTE="0";
+		RPS1+="$ZSHRC_NEW_TIME " # print return code & execution time of last command
+		## TODO use hours, minutes, seconds
+	fi;
+	RPS1+="%h %D{%T %a %e.%m.%Y}"
+#	RPS1+="%h %D{%T %a %*}"
+}
+
+#   if [[ $ZSHRC_ACPITOOL -eq 1 ]]
+#   then
+#       ZSHRC_ACPITOOL_ARRAY=(${(z)$(acpitool | perl -e 'while (<>) { if (/.*Battery.* (.*), (.*)%$/) { print "$1 $2 "} elsif (/AC adapter.*: (.*)-line$/) {print $1}}')})
+#   # this is to de-confuse vim6 highlighting: '
+#       if [[ $ZSHRC_ACPITOOL_ARRAY[1] = "charged" ]]
+#       then
+#           RPROMPT+="$fg_green"
+#       elif [[ $ZSHRC_ACPITOOL_ARRAY[1] = "charging" ]]
+#       then
+#           RPROMPT+="$fg_light_green"
+#       elif [[ $ZSHRC_ACPITOOL_ARRAY[1] = "discharging" ]]
+#       then
+#           if [[ $ZSHRC_ACPITOOL_ARRAY[2] -lt "30.0" ]]
+#           then
+#           RPROMPT+="$fg_red"
+#           else
+#           RPROMPT+="$fg_purple"
+#           fi
+#       fi
+#       RPROMPT+="$ZSHRC_ACPITOOL_ARRAY[2] $fg_no_colour"
+#   fi

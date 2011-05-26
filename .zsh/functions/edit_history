@@ -1,0 +1,31 @@
+#!/usr/bin/zsh
+
+edit_hist () {
+	emulate -LR zsh
+	unsetopt append_history inc_append_history share_history
+
+	# You may want these in this case even if not otherwise:
+	# setopt hist_expire_dups_first hist_ignore_all_dups
+
+	# The following gibberish creates a unique tempfile
+	# and makes sure that we'll write the whole history
+	local SAVEHIST=$HISTSIZE HISTFILE=${:-=(:)}$$
+
+	# Make sure we write a new file and rename to the tempfile
+	setopt no_hist_save_by_copy
+
+	# Finally, the actual, useful work
+	fc -W
+	{
+		if ${VISUAL:-${EDITOR:-vi}} $HISTFILE
+		then
+			# Truncate internal history to discard deleted lines
+			HISTSIZE=0
+			HISTSIZE=$SAVEHIST
+			fc -R
+		fi
+	} always {
+		rm -f $HISTFILE
+	}
+}
+

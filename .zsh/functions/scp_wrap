@@ -1,0 +1,13 @@
+#!/usr/bin/zsh
+
+#TODO: I honestly do not know why I ever needed this
+#      Find out & comment what it is useful for, I guess
+scp_wrap() {
+   local -a args
+   local i
+    for i in "$@"; do case $i in
+        (*:*) args+=($i) ;;
+        (*) args+=(${~i}) ;;
+    esac; done
+    command scp "${(@)args}"
+}

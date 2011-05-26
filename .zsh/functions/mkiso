@@ -1,0 +1,13 @@
+#!/usr/bin/zsh
+
+# Make ISO image. Query values interactively.
+mkiso() {
+	echo "Enter volume name:"
+	read volume
+	echo "Enter ISO Name (ie. tmp.iso):"
+	read iso
+	echo "Enter input directory or file:"
+	read files
+	echo "Building '$HOME/$iso'"
+	mkisofs -o ~/$iso -A $volume -allow-multidot -J -R -iso-level 3 -V $volume -R $files
+}

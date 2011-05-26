@@ -1,0 +1,13 @@
+#!/usr/bin/zsh
+
+header() {
+	case $TERM in
+		(sun-cmd)
+			print -nP "\e1$*\e\\"
+		;;
+#		(*)
+		*xterm*|rxvt|(dt|k|E)term)
+			print -nP "\e]2;$*\a"
+		;;
+	esac
+}

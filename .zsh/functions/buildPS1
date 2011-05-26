@@ -1,0 +1,18 @@
+#!/usr/bin/zsh
+
+buildPS1 () {
+	autoload colors
+	colors
+
+	[ $SSH_TTY ] && export ZSHRC_PARENT_SSH=1
+	[ $WINDOW  ] && export ZSHRC_PARENT_SCREEN=1
+	PS1=''
+	[ $ZSHRC_PARENT_SSH ]       && PS1+="%S"
+	[ $USER = 'ilona' ]         && PS1+="%(!.$%{fg[red]%}%m.%{$fg_bold[magenta]%}%n@%m)" || PS1+="%(!.%{$fg[red]%}%m.%{$fg_bold[green]%}%n@%m)"
+	[ $ZSHRC_PARENT_SSH ]       && PS1+="%s"
+	PS1+="%{$fg_no_bold[default]%}"
+	[ $ZSHRC_PARENT_SCREEN ]    && PS1+="%{$fg_bold[yellow]%} [$WINDOW]"
+	[ $VCSH_DIRECTORY ]         && PS1+="%{$fg_bold[yellow]%} [$VCSH_DIRECTORY]"
+	[[ $ZSH_VERSION =~ 'dev' ]] && PS1+="%{$fg_bold[red]%} $ZSH_VERSION"
+	PS1+="%{$fg_bold[blue]%} %~ %# %{$fg_no_bold[default]%}"
+}
