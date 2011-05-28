@@ -1,0 +1,29 @@
+# vim(): open 'foo:12' as foo at line 12
+# http://www.zsh.org/mla/users/2011/msg00333.html
+#
+# vim foo:
+# vim foo
+#
+# vim foo:bar
+# vim foo
+#
+# vim foo:123
+# vim foo +123
+#
+# vim foo:123:
+# vim foo +123
+#
+# vim foo:123:bar
+# vim foo +123
+
+vim() {
+	if test $# != 1 -o -r $1; then
+		command vim "${@}"
+	else
+		local args
+		args=(${(s.:.)1})
+		[[ $#args -ge 2 && $args[2] == <-> ]] \
+			&& command vim $args[1] +$args[2] \
+			|| command vim $args[1]
+	fi
+}
