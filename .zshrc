@@ -377,6 +377,7 @@ alias vimdiff='vimdiff -O2'
 alias why='whence -ca'
 
 # useful to see what hogs your disk (this is so i can actually find this damn alias in here: find disk space)
+# this will most likely die soon. ncdu is way better
 alias sz='du -ax | sort -n | tail -n 10'
 
 # various stuff from thailand
@@ -385,7 +386,7 @@ alias dt='dmesg | tail'
 alias dh='df -h'
 alias dm='df -m'
 
-#ebg13 vf frpher
+# ebg13 vf frpher
 alias rot13='tr a-zA-Z n-za-mN-ZA-M <<<'
 
 # base64 conversion
@@ -397,10 +398,16 @@ alias -g C='| wc -l'
 alias -g N='1>/dev/null 2>/dev/null'
 alias -g E='| egrep'
 alias -g G='| grep -i'
-alias -g H='| head'
 alias -g GV='| grep -iv'
-alias -g L='| $PAGER'
+alias -g H='| head'
+alias -g H1='| head -n1'
+alias -g H5='| head -n5'
+alias -g H10='| head -n10'
 alias -g T='| tail'
+alias -g T1='| tail -n1'
+alias -g T5='| tail -n5'
+alias -g T10='| tail -n10'
+alias -g L='| $PAGER'
 alias -g V='| vim -'
 alias -g X='| xargs'
 alias -g      ...=../..
@@ -512,8 +519,6 @@ compdef _mkdir   mcd            # tab completion for mcd
 # "alt-h" : run run-help.
 # fancy stuff like "git add" starting man git-add works
 autoload run-help
-
-
 
 
 startup

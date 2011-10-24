@@ -13,7 +13,7 @@ purge() {
 			rm ${FILES}
 			echo ">> $PWD purged, $NBFILES files removed"
 		else
-			echo "Ok. .. than not.."
+			echo "Aborting..."
 		fi
 	fi
 }
