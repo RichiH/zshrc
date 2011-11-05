@@ -314,7 +314,7 @@ setopt    multios                      # this enables various goodness
                                        # make install > /tmp/logfile | grep -i error
 setopt    braceccl                     # {a-z} {0-2} etc expansion
 
-autoload compinit;compinit            # this enables autocompletion for pretty much everything
+autoload  compinit;compinit            # this enables autocompletion for pretty much everything
 
 
 # make ^W on foo | bar delete 'bar', not '| bar'
