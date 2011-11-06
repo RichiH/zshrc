@@ -201,7 +201,7 @@ zstyle     ':completion::*:(vi|vim):*' file-patterns '*.nroff' '*~*.(aux|dvi|log
 
 
 # SSH host completion
-#if [ -r .ssh/known_hosts ]; then
+#if [[ -r .ssh/known_hosts ]]; then
 #	local knownhosts
 #	knownhosts=( ${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[0-9]*}%%\ *}%%,*} ) 
 #	zstyle    ':completion:*:(ssh|scp|sftp):*' hosts $knownhosts
@@ -249,7 +249,7 @@ if [[ -x $( which less) ]]
 export LESSCHARSET="utf-8"
 then
 	export PAGER="less"
-	if [ $terminfo[colors] -ge 8 ]
+	if [[ $terminfo[colors] -ge 8 ]]
 	then
 		export LESS_TERMCAP_mb=$'\E[01;31m'
 		export LESS_TERMCAP_md=$'\E[01;31m'
