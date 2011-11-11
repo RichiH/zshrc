@@ -1,0 +1,9 @@
+#!/usr/bin/zsh
+
+# Get all private keys in ~/.ssh and add them to your ssh authentication agent
+
+ssa () {
+	for key in ~/.ssh/id_*[^pub]; do
+		ssh-add $key
+	done
+}
