@@ -99,27 +99,27 @@ bindkey -s '^Z' "fg\n"                                # fetch background job int
 # insert Unicode character
 autoload      insert-unicode-char
 zle -N        insert-unicode-char
-bindkey '^Xi' insert-unicode-char
+bindkey '^xi' insert-unicode-char
 
 # "ctrl-e D" to insert the actual datetime YYYY/MM
               __insert-datetime-directory() { BUFFER="$BUFFER$(date '+%Y/%m')"; CURSOR=$#BUFFER; }
 zle -N        __insert-datetime-directory
-bindkey '^ED' __insert-datetime-directory
+bindkey '^eD' __insert-datetime-directory
 
 # "ctrl-e d" to insert the actual datetime YYYY-MM-DD--hh-mm-ss-TZ
               __insert-datetime-default() { BUFFER="$BUFFER$(date '+%F--%H-%M-%S-%Z')"; CURSOR=$#BUFFER; }
 zle -N        __insert-datetime-default
-bindkey '^Ed' __insert-datetime-default
+bindkey '^ed' __insert-datetime-default
 
 # "ctrl-e w" to delete to prior whitespace
 autoload -U   delete-whole-word-match
 zle -N        delete-whole-word-match
-bindkey "^Ew" delete-whole-word-match
+bindkey "^ew" delete-whole-word-match
 
 # "ctrl-e ." to insert last typed word again
               __insert-last-typed-word() { zle insert-last-word -- 0 -1 };
 zle -N        __insert-last-typed-word;
-bindkey "^E." __insert-last-typed-word
+bindkey "^e." __insert-last-typed-word
 
 # "ctrl-e q" to quote line
 __quote_line () {
@@ -129,7 +129,7 @@ __quote_line () {
 	zle end-of-line
 }
 zle -N        __quote_line
-bindkey '^Eq' __quote_line
+bindkey '^eq' __quote_line
 
 # "ctrl-e 1" to jump behind the first word on the cmdline
 function __jump_behind_first_word() {
@@ -143,7 +143,7 @@ function __jump_behind_first_word() {
 	fi
 }
 zle -N        __jump_behind_first_word
-bindkey '^E1' __jump_behind_first_word
+bindkey '^e1' __jump_behind_first_word
 
 # weird completion style
 ## press "ctrl-x f" to complete file, no matter what the completion system would do
@@ -480,7 +480,8 @@ zle -N self-insert url-quote-magic
 # "ctrl-e e" : open iZLE buffer in $EDITOR
 autoload      edit-command-line
 zle -N        edit-command-line
-bindkey '^Ee' edit-command-line
+bindkey '^ee' edit-command-line
+bindkey '^e^e' edit-command-line
 
 ## This function allows you type a file pattern,
 ## and see the results of the expansion at each step.
