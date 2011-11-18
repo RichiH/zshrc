@@ -198,6 +198,12 @@ zstyle    ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;
 # vim completion: complete on aux|dvi|log|idx|pdf|rel|out last
 zstyle     ':completion::*:(vi|vim):*' file-patterns '*.nroff' '*~*.(aux|dvi|log|idx|pdf|rel|out)' '*'
 
+#vcs_info (needs PROMPT_SUBST set)
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f'
+zstyle ':vcs_info:*' formats       '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f'
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+zstyle ':vcs_info:*' enable git svn
 
 
 # SSH host completion
@@ -313,6 +319,7 @@ setopt    multios                      # this enables various goodness
                                        # cmd > >(cmd1) > >(cmd2) # would redirect stdout from cmd to stdin of cmd1,2
                                        # make install > /tmp/logfile | grep -i error
 setopt    braceccl                     # {a-z} {0-2} etc expansion
+setopt    prompt_subst                 # allow substition with $PS1, etc. Needed for vcs_info
 
 autoload  compinit;compinit            # this enables autocompletion for pretty much everything
 

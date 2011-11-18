@@ -1,6 +1,7 @@
 #!/usr/bin/zsh
 
 precmd() {
+	vcs_info
 	buildRPS1
 }
 
