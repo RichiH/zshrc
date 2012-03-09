@@ -216,9 +216,6 @@ zstyle ':vcs_info:*' enable git svn
 # ZLE highlighting. Will not work on 4.3.6 or before, but it will not hurt, either 
 zle_highlight=(isearch:underline)
 
-autoload colors
-colors
-
 # make sure our function directories exist and load from them
 foreach function_directory (~/.zsh/functions ~/.zsh/functions/hooks); do;
 [[ -d $function_directory ]] || print -P "$fg_bold[red]WARNING:$fg_no_bold[default] $function_directory does not exist. Shell functionality will be severely limited!"
@@ -322,6 +319,12 @@ setopt    braceccl                     # {a-z} {0-2} etc expansion
 setopt    prompt_subst                 # allow substition with $PS1, etc. Needed for vcs_info
 
 autoload  compinit;compinit            # this enables autocompletion for pretty much everything
+autoload  colors                       # use colors
+colors
+autoload  -Uz zmv                      # move function
+autoload  -Uz zed                      # edit functions within zle
+
+
 
 
 # make ^W on foo | bar delete 'bar', not '| bar'
@@ -501,9 +504,6 @@ bindkey "^Xf" insert-files ## C-x-f
 autoload -U   history-pattern-search
 zle -N        history-pattern-search-backward history-pattern-search
 bindkey '^er' history-pattern-search-backward
-
-# zmv
-autoload -U zmv
 
 ## Allow known mime types to be used as 'command'
 autoload -U zsh-mime-setup
