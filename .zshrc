@@ -403,6 +403,24 @@ alias rot13='tr a-zA-Z n-za-mN-ZA-M <<<'
 alias base64-encode='perl -MMIME::Base64 -e "print encode_base64(<>)" <<<'
 alias base64-decode='perl -MMIME::Base64 -e "print decode_base64(<>)" <<<'
 
+
+
+# display the ten newest files
+alias lsnew="ls -rl *(D.om[1,10])"
+# display the ten oldest files
+alias lsold="ls -rtlh *(D.om[1,10])"
+# display the ten smallest files
+alias lssmall="ls -Srl *(.oL[1,10])"
+
+#ssh & scp without security checks
+alias ssh-noverify='ssh -o "StrictHostKeyChecking=no" -o "UserKnownHostsFile=/dev/null"'
+alias scp-noverify='scp -o "StrictHostKeyChecking=no" -o "UserKnownHostsFile=/dev/null"'
+
+# serial console stuff
+alias serial_115200_7bit='screen /dev/ttyUSB0 115200,cs7'
+alias serial_2400_8bit_noflow='screen /dev/ttyUSB0 2400,cs8,ixoff'
+alias serial_9600_8bit='screen /dev/ttyUSB0 9600,cs8'
+
 # global aliases. use with care!
 alias -g C='| wc -l'
 alias -g N='1>/dev/null 2>/dev/null'
@@ -439,25 +457,7 @@ alias -g A3="| awk '{print \$3}'"
 alias -g A4="| awk '{print \$4}'"
 alias -g A5="| awk '{print \$5}'"
 
-
-# display the ten newest files
-alias lsnew="ls -rl *(D.om[1,10])"
-# display the ten oldest files
-alias lsold="ls -rtlh *(D.om[1,10])"
-# display the ten smallest files
-alias lssmall="ls -Srl *(.oL[1,10])"
-
-#ssh & scp without security checks
-alias ssh-noverify='ssh -o "StrictHostKeyChecking=no" -o "UserKnownHostsFile=/dev/null"'
-alias scp-noverify='scp -o "StrictHostKeyChecking=no" -o "UserKnownHostsFile=/dev/null"'
-
-# serial console stuff
-alias serial_115200_7bit='screen /dev/ttyUSB0 115200,cs7'
-alias serial_2400_8bit_noflow='screen /dev/ttyUSB0 2400,cs8,ixoff'
-alias serial_9600_8bit='screen /dev/ttyUSB0 9600,cs8'
-
-
-## named directories
+# named directories
 
 hash -d deb=/var/cache/apt/archives
 hash -d doc=/usr/share/doc
@@ -469,7 +469,7 @@ hash -d func=$HOME/.zsh/functions
 hash -d mr=$XDG_CONFIG_HOME/mr
 hash -d repo.d=$XDG_CONFIG_HOME/vcsh/repo.d
 
-# move cursor between the chars when typing '', "", (), [], and {}
+# move cursor between chars when typing '', "", (), [], and {}
 magic-single-quotes()   { if [[ $LBUFFER[-1] == \' ]]; then zle self-insert; zle .backward-char; else zle self-insert; fi }; bindkey \' magic-single-quotes
 magic-double-quotes()   { if [[ $LBUFFER[-1] == \" ]]; then zle self-insert; zle .backward-char; else zle self-insert; fi }; bindkey \" magic-double-quotes
 magic-parentheses()     { if [[ $LBUFFER[-1] == \( ]]; then zle self-insert; zle .backward-char; else zle self-insert; fi }; bindkey \) magic-parentheses
