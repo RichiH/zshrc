@@ -421,6 +421,9 @@ alias serial_115200_7bit='screen /dev/ttyUSB0 115200,cs7'
 alias serial_2400_8bit_noflow='screen /dev/ttyUSB0 2400,cs8,ixoff'
 alias serial_9600_8bit='screen /dev/ttyUSB0 9600,cs8'
 
+# git stuff
+alias gcd='git checkout'
+
 # global aliases. use with care!
 alias -g C='| wc -l'
 alias -g N='1>/dev/null 2>/dev/null'
