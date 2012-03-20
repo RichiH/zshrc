@@ -15,6 +15,7 @@ buildPS1 () {
 	[[ -n $VCSH_DIRECTORY ]]      && PS1+="%{$fg_bold[yellow]%} [$VCSH_DIRECTORY]"
 	[[ $SHLVL -gt 1 ]]            && PS1+="%{$fg_bold[cyan]%} [$SHLVL]"
 	[[ $ZSH_VERSION =~ 'dev' ]]   && PS1+="%{$fg_bold[red]%} $ZSH_VERSION"
+	PS1+="%{$fg_no_bold[default]%}"
 	PS1+=' ${vcs_info_msg_0_}'
 	PS1+="%{$fg_bold[blue]%} %~ %# %{$fg_no_bold[default]%}"
 }
