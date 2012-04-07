@@ -188,7 +188,7 @@ zstyle    ':completion:*' use-cache on
 zstyle    ':completion:*' cache-path "$XDG_CACHE_HOME/zsh"
 
 # correctly color the ls completion
-LS_COLORS=$(dircolors)
+eval $(dircolors)
 zstyle    ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # pretty kill completion. colored, cpu load & process tree
