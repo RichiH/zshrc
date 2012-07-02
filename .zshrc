@@ -205,6 +205,9 @@ zstyle ':vcs_info:*' formats       '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f'
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
 zstyle ':vcs_info:*' enable git svn
 
+# Enable ..<TAB> -> ../
+zstyle ':completion:*' special-dirs true
+
 
 # SSH host completion
 #if [[ -r .ssh/known_hosts ]]; then
@@ -232,6 +235,7 @@ SPROMPT="zsh: correct '%R' to '%r'? [N/y/a/e] "  # the prompt we see when being 
 
 PATH+=:/usr/bin
 PATH=/usr/local/bin:$PATH
+[[ -d /usr/lib/ccache ]] && PATH=/usr/lib/ccache:$PATH
 [[ -d ~/.bin ]] && PATH=~/.bin:$PATH
 [[ -d ~/bin ]] && PATH=~/bin:$PATH
 [[ -d /usr/local/vim_extended/bin ]] && PATH=/usr/local/vim_extended/bin:$PATH
