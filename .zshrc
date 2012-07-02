@@ -235,6 +235,7 @@ SPROMPT="zsh: correct '%R' to '%r'? [N/y/a/e] "  # the prompt we see when being 
 
 PATH+=:/usr/bin
 PATH=/usr/local/bin:$PATH
+[[ -d /usr/lib/ccache ]] && PATH=/usr/lib/ccache:$PATH
 [[ -d ~/.bin ]] && PATH=~/.bin:$PATH
 [[ -d ~/bin ]] && PATH=~/bin:$PATH
 [[ -d /usr/local/vim_extended/bin ]] && PATH=/usr/local/vim_extended/bin:$PATH
