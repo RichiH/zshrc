@@ -11,9 +11,9 @@ buildPS1 () {
 	[[ $USER = 'ilona' ]]         && PS1+="%(!.$%{fg[red]%}%m.%{$fg_bold[magenta]%}%n@%m)" || PS1+="%(!.%{$fg[red]%}%m.%{$fg_bold[green]%}%n@%m)"
 	[[ -n $ZSHRC_PARENT_SSH ]]    && PS1+="%s"
 	PS1+="%{$fg_no_bold[default]%}"
+	[[ $SHLVL -gt 1 ]]            && PS1+="%{$fg_bold[cyan]%} [$SHLVL]"
 	[[ -n $ZSHRC_PARENT_SCREEN ]] && PS1+="%{$fg_bold[yellow]%} [$WINDOW]"
 	[[ -n $VCSH_DIRECTORY ]]      && PS1+="%{$fg_bold[yellow]%} [$VCSH_DIRECTORY]"
-	[[ $SHLVL -gt 1 ]]            && PS1+="%{$fg_bold[cyan]%} [$SHLVL]"
 	[[ $ZSH_VERSION =~ 'dev' ]]   && PS1+="%{$fg_bold[red]%} $ZSH_VERSION"
 	PS1+="%{$fg_no_bold[default]%}"
 	PS1+=' ${vcs_info_msg_0_}'
