@@ -253,6 +253,7 @@ EDITOR="vim"
 CORRECT_IGNORE='_*'
 
 if [[ -x $( which less) ]]
+export LESS='-Ri'
 export LESSCHARSET="utf-8"
 then
 	export PAGER="less"
