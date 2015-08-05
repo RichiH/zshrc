@@ -388,6 +388,7 @@ alias gpg='gpg --no-use-agent'
 alias grep='grep --color=auto'
 alias scp='noglob scp_wrap'
 alias vimdiff='vimdiff -O2'
+alias mtr='mtr --curses'
 
 alias why='whence -ca'
 
