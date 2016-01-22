@@ -344,12 +344,12 @@ alias zshrc.local="$EDITOR ~/.zshrc.$HOST"
 
 
 # shortcuts
-alias a='aptitude'
-alias ai='aptitude install'
-alias as='aptitude search'
-alias ass='aptitude show'
-alias au='aptitude update'
-alias asu='aptitude safe-upgrade'
+alias a='apt'
+alias ai='apt install'
+alias as='apt search'
+alias ass='apt show'
+alias au='apt update'
+alias asu='apt safe-upgrade'
 
 alias afu='apt-file update'
 alias afs='apt-file search'
