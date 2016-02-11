@@ -539,6 +539,7 @@ autoload run-help
 
 startup
 
+
 # source any local settings we might have
 foreach dotfile (/etc/zsh/local ~/.zshrc.local ~/.zshrc.$HOST ~/.zshrc.$USER); do
 	if [[ -r $dotfile ]]; then; echo "Sourcing $dotfile"; source $dotfile; fi
