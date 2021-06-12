@@ -237,6 +237,7 @@ PATH+=:/usr/bin
 PATH=/usr/local/bin:$PATH
 [[ -d /usr/lib/ccache ]] && PATH=/usr/lib/ccache:$PATH
 [[ -d ~/.bin ]] && PATH=~/.bin:$PATH
+[[ -d ~/.local/bin ]] && PATH=~/.local/bin:$PATH
 [[ -d ~/bin ]] && PATH=~/bin:$PATH
 [[ -d /usr/local/vim_extended/bin ]] && PATH=/usr/local/vim_extended/bin:$PATH
 
@@ -384,7 +385,6 @@ alias mkdir='nocorrect mkdir'   # don't correct mkdir
 alias man='nocorrect man'
 alias wget='noglob wget'
 alias whois='whois -H'
-alias gpg='gpg --no-use-agent'
 alias grep='grep --color=auto'
 alias scp='noglob scp_wrap'
 alias vimdiff='vimdiff -O2'
