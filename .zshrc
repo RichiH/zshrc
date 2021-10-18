@@ -429,6 +429,7 @@ alias serial_9600_8bit='screen /dev/ttyUSB0 9600,cs8'
 
 # git stuff
 alias gcd='git checkout'
+alias gcdb='git checkout -b "richih/$(date +%s)"'
 
 # global aliases. use with care!
 alias -g C='| wc -l'
