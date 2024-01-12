@@ -238,6 +238,7 @@ PATH=/usr/local/bin:$PATH
 [[ -d /usr/lib/ccache ]] && PATH=/usr/lib/ccache:$PATH
 [[ -d ~/.local/bin ]] && PATH=~/.local/bin:$PATH
 [[ -d ~/.bin ]] && PATH=~/.bin:$PATH
+[[ -d ~/.local/bin ]] && PATH=~/.local/bin:$PATH
 [[ -d ~/bin ]] && PATH=~/bin:$PATH
 [[ -d /usr/local/vim_extended/bin ]] && PATH=/usr/local/vim_extended/bin:$PATH
 
@@ -429,6 +430,7 @@ alias serial_9600_8bit='screen /dev/ttyUSB0 9600,cs8'
 
 # git stuff
 alias gcd='git checkout'
+alias gcdb='git checkout -b "richih/$(date +%s)"'
 
 # global aliases. use with care!
 alias -g C='| wc -l'
